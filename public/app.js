@@ -116,7 +116,7 @@
   }
 
   function toggleMarkerFlags() {
-    const showFlags = map.getZoom() < 4;
+    const showFlags = map.getZoom() < 7;
     const markers = document.querySelectorAll(".marker");
     markers.forEach(marker => {
       if (showFlags) {

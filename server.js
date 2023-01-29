@@ -1,7 +1,9 @@
 /* packages & env variables */
 import dotenv from 'dotenv';
 import axios from 'axios';
-import ping from 'ping';
+// import ping from 'ping';
+// import ping from "net-ping";
+import icmp from 'icmp';
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import { URL } from "node:url";
@@ -61,15 +63,15 @@ async function pingWebsite(input) {
   try {
     // get ip address
     const hostReq = new URL(input).host.replace("www.", "");
-    const { host: hostRes, numeric_host: hostIP } = await ping.promise.probe(hostReq);
+    const {host, ip} = await icmp.ping(hostReq, 1000);
     // get ip geolocation data
-    const geoURL = `https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.IPGEO_APIKEY}&ip=${hostIP}`;
+    const geoURL = `https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.IPGEO_APIKEY}&ip=${ip}`;
     const geoRes = await axios.get(geoURL);
     const { country_name: country, state_prov: state_province, city, zipcode, latitude, longitude, country_flag, isp, organization } = geoRes.data;
     return {
-      host: hostRes,
+      host,
       locData: {
-        ip: hostIP, country, country_flag, state_province, city,
+        ip, country, country_flag, state_province, city,
         zipcode, latitude, longitude, isp, organization
       }
     }

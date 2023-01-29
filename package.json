@@ -8,7 +8,7 @@
     "start": "node server.js",
     "serve": "nodemon --watch . server.js"
   },
-  "repository":{
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/egeuz/internet-map-redux.git"
   },
@@ -19,9 +19,8 @@
     "axios": "^1.2.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "icmp": "^2.0.1",
     "mongodb": "^4.13.0",
-    "nodemon": "^2.0.20",
-    "ping": "^0.4.2",
-    "sanitize": "^2.1.2"
+    "nodemon": "^2.0.20"
   }
 }
