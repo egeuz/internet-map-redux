@@ -8,7 +8,7 @@ import { URL } from "node:url";
 dotenv.config();
 
 /* init mongodb connection */
-const client = new MongoClient(process.env.MONGODB_URI);
+const client = new MongoClient(process.env.DB_URI);
 let websites;
 try {
   await client.connect();
@@ -30,10 +30,9 @@ var opts = {
   redirect: false
 }
 app.use(express.static('public', opts));
-const port = process.env.PORT || 3000
-
+const port = process.env.PORT;
 app.listen(port, () => {
-  console.log(`mixin it up at http://localhost:${port}`)
+  console.log(`mixin it up at port:${port}`)
 });
 
 /* express routes */
