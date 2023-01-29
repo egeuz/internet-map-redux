@@ -60,11 +60,21 @@ button:active {
   top: 1rem;
   width: calc(100% - 4rem);
   max-width: 375px;
-  max-height: 250px;
+  max-height: 200px;
   overflow-y: scroll;
   border: 2px solid #111;
   background: #fff;
-  padding: 0 1rem 1rem;
+  padding: 0rem 1rem;
+}
+
+@media (min-width: 750px) {
+  #interface {
+    max-height: 250px;
+  }
+}
+
+#interface p:first-child {
+  margin-top: 1rem;
 }
 
 #search {
@@ -72,14 +82,20 @@ button:active {
   top: 0;
   padding: 1rem 0;
   background: #fff;
+  display: flex;
+  gap: 1rem;
 }
 
 #search input {
-  margin-top: 1rem;
+  flex-grow: 2;
 }
 
 #about p {
   margin-bottom: 0.75rem;
+}
+
+#about p:last-child {
+  margin-bottom: 2rem;
 }
 
 /* MAP MARKER STYLES */

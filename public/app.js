@@ -14,8 +14,9 @@
   /* LOAD MAP MARKERS */
   const geojson = { // init marker collection
     type: 'FeatureCollection',
-    features: initializeMapDatapoints(mapData)
+    features: []
   };
+  initializeMapDatapoints(mapData);
   geojson.features.forEach(datapoint => {
     renderMapDatapoint(datapoint); // render markers
   });
@@ -47,7 +48,13 @@
     const datapoints = [];
     mapData.forEach(({ host, locations }) => {
       locations.forEach(location => {
-        datapoints.push(generateMapDatapoint(host, location));
+        // see if location overlaps w/ any prior datapoint
+        if (datapointLocOverlaps(location)) {
+          location.longitude = offsetCoordinate(location.longitude);
+          location.latitude = offsetCoordinate(location.latitude);
+          console.log(location);
+        }
+        geojson.features.push(generateMapDatapoint(host, location));
       });
     });
     return datapoints;
@@ -83,6 +90,17 @@
       .Marker(marker)
       .setLngLat(coordinates)
       .addTo(map);
+  }
+
+  function datapointLocOverlaps({ longitude: lng, latitude: lat }) {
+    return geojson.features.find(f =>
+      f.geometry.coordinates.lng === lng && f.geometry.coordinates.lat === lat
+    );
+  }
+
+  function offsetCoordinate(coord) {
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    return parseFloat(coord) + 0.001 * dir;
   }
 
   // user interaction
@@ -126,5 +144,7 @@
       }
     });
   }
+
+
 
 })();
