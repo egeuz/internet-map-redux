@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internet Map Redux</title>
+    <!-- MAPBOX -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="interface">     
+      <div id="search">
+        <p>look up the physical locations that websites are hosted out of:</p>
+        <input type="url" value="https://" />
+        <button>>> go</button>
+      </div>
+      <div id="about">
+        <h1>internet map (redux)</h1>
+        <p>
+          a web installation that maps out where the websites you visit every day are served from, or at least the physical location that their IP address is registered in.
+        </p>
+        <p>
+          the way results appear concentrated in a few locations (and mostly in the global north) points to how the internet, something we consider to be global and almost etheral, is in fact very much bound to the physical world, and the infrastructure that powers them, built and operated through a wild mess of free market capitalism.
+        </p>
+        <p>
+          this is a collective data visualization tool that is powered by its participants' curiosity. so you're cordially invited to make some of your own searches and add to the map. they'll stay on the page for a month or so. each addition is curated and moderated by a human (me), so be nice.
+        </p>
+        <p>Designed and developed by <a href="https://egeuz.co/">Ege Uz.</a></p>
+      </div>
+
+    </div>
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

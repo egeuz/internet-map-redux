@@ -1,0 +1,114 @@
+/* BASE STYLES */
+body {
+  margin: 0;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  opacity: 0.7;
+}
+
+a:hover {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+input, button {
+  font-size: 1rem;
+  font-family: monospace;
+}
+
+button {
+  background: none;
+  border: 1px solid #000;
+  padding: 0.25rem 0.5rem;
+}
+
+
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  filter:hue-rotate(300deg);
+}
+
+/* INTERFACE STYLES */
+#interface {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: calc(100% - 4rem);
+  max-width: 375px;
+  max-height: 250px;
+  overflow-y: scroll;
+  border: 2px solid #111;
+  background: #fff;
+  padding: 0 1rem 1rem;
+}
+
+#search {
+  position: sticky;
+  top: 0;
+  padding: 1rem 0;
+  background: #fff;
+}
+
+#search input {
+  margin-top: 1rem;
+}
+
+#about p {
+  margin-bottom: 0.75rem;
+}
+
+/* MAP MARKER STYLES */
+.marker {
+  /* height: 20px; */
+  background: #fff;
+  border-radius: 10%;
+  padding: 5px;
+  
+}
+
+.marker-wrapper {
+  display: flex;
+  gap: 5px;
+  position: relative;
+}
+
+.marker-arrow {
+  background: #fff;
+  width: 20px;
+  height: 20px;
+  transform: translateX(-50%) rotateZ(45deg);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  z-index: -1;
+  justify-self: center;
+}
+
+.marker p {
+  font-size: 1.125rem;
+  font-family: monospace;
+}
+.marker img {
+  display: none;
+  max-width: 24px;
+}
+
+.marker.show-flag img {
+  display: block;
+}
