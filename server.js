@@ -30,9 +30,11 @@ var opts = {
   redirect: false
 }
 app.use(express.static('public', opts));
-app.listen(process.env.PORT, () =>
-  console.log(`mixin it up @ port ${process.env.PORT}`)
-);
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+  console.log(`mixin it up at http://localhost:${port}`)
+});
 
 /* express routes */
 app.get('/mapbox-token', async (req, res) => {

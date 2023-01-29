@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "watch": "nodemon index.js",
+    "start": "node server.js",
     "serve": "nodemon --watch . server.js"
+  },
+  "repository":{
+    "type": "git",
+    "url": "git+https://github.com/egeuz/internet-map-redux.git"
   },
   "keywords": [],
   "author": "",
