@@ -93,7 +93,11 @@
       input = `https://${input}`;
     }
     const res = await axios.post("/website-query", { input });
-    const { host, locations } = res.data;
+    const { error_message, host, locations } = res.data;
+    console.log(res.data);
+    if (error_message) {
+      alert(error_message);
+    }
 
     const resultOnMap = geojson.features.find(f => f.properties.name === host);
 

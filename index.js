@@ -39,6 +39,10 @@ app.get('/map-data', async (req, res) => {
 app.post('/website-query', async (req, res) => {
   const { input } = req.body;
   const data = await pingWebsite(input);
+  if (data.error_message) {
+    res.json(data);
+    return;
+  }
   const validatedData = await validateDataInDB(data);
   res.json(validatedData);
 });
@@ -61,7 +65,7 @@ async function pingWebsite(input) {
       }
     }
   } catch (err) {
-    console.err(err);
+    console.error(err);
     return { error_message: "Sorry, an error occurred. :(" }
   }
 }
