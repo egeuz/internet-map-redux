@@ -21,7 +21,15 @@ try {
 /* init express server */
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
+var opts = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['htm', 'html','css','js','ico','jpg','jpeg','png','svg'],
+  index: ['index.html'],
+  maxAge: '1m',
+  redirect: false
+}
+app.use(express.static('public', opts));
 app.listen(process.env.PORT, () =>
   console.log(`mixin it up @ port ${process.env.PORT}`)
 );
